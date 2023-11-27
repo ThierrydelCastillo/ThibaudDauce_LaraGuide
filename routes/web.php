@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/a-propos', function () {
     return view('a-propos');
 });
+
+Route::get('/bonjour/{prenom}', function () {
+    return 'bonjour ' . request('prenom');
+});
