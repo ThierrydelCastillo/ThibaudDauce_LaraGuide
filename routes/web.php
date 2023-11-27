@@ -24,3 +24,12 @@ Route::get('/bonjour/{nom}', function () {
         'prenom' => request('nom'),
     ]);
 });
+
+Route::get('/inscription', function () {
+    return view('inscription');
+});
+
+Route::post('/inscription', function () {
+    return 'Nous avons reçu votre email qui est ' . request('email') . ' et votre mot de passe est ' . request('password');
+    return 'Formulaire reçu';
+});
