@@ -11,6 +11,8 @@
 |
 */
 
+use App\Utilisateur;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -30,6 +32,11 @@ Route::get('/inscription', function () {
 });
 
 Route::post('/inscription', function () {
+    $utilisateur = new App\Utilisateur();
+    $utilisateur->email = request('email');
+    $utilisateur->mot_de_passe = bcrypt(request('password'));
+
+    $utilisateur->save(); // INSERT en base de données
+
     return 'Nous avons reçu votre email qui est ' . request('email') . ' et votre mot de passe est ' . request('password');
-    return 'Formulaire reçu';
 });
