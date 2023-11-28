@@ -12,6 +12,7 @@
 */
 
 use App\Utilisateur;
+use Hamcrest\Util;
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,4 +39,12 @@ Route::post('/inscription', function () {
     ]);
 
     return 'Nous avons reçu votre email qui est ' . request('email') . ' et votre mot de passe est ' . request('password');
+});
+
+Route::get('/utilisateurs', function () {
+    $utilisateurs = Utilisateur::all();
+
+    return view('utilisateurs', [
+        'utilisateurs' => $utilisateurs,
+    ]);
 });
