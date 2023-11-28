@@ -2,6 +2,6 @@
 
 @section('contenu')
     <div class="title m-b-md">
-        Laravel
+        Bonjour
     </div>
 @endsection
