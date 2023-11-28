@@ -23,8 +23,12 @@ class ConnexionController extends Controller
             'password' => request('password'),
         ]);
 
-        var_dump($resultat);
+        if ($resultat) {
+            return redirect('/mon-compte');
+        }
         
-        return 'traitement formulaire connexion';
+        return back()->withInput()->withErrors([
+            'email' => 'Vos identifiants sont incorrects.',
+        ]);
     }
 }
