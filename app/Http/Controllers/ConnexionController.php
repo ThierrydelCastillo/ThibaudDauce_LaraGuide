@@ -17,6 +17,14 @@ class ConnexionController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
+
+        $resultat = auth()->attempt([
+            'email' => request('email'),
+            'password' => request('password'),
+        ]);
+
+        var_dump($resultat);
+        
         return 'traitement formulaire connexion';
     }
 }
