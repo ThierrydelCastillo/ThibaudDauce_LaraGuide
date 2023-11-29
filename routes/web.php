@@ -11,18 +11,13 @@
 |
 */
 
-use App\Utilisateur;
-use Hamcrest\Util;
-
-Route::view('/', 'welcome');
-
 Route::get('/inscription', 'InscriptionController@formulaire');
 Route::post('/inscription', 'InscriptionController@traitement');
 
 Route::get('/connexion', 'ConnexionController@formulaire');
 Route::post('/connexion', 'ConnexionController@traitement');
 
-Route::get('/utilisateurs', 'UtilisateursController@liste');
+Route::get('/', 'UtilisateursController@liste');
 
 Route::get('/mon-compte', 'CompteController@accueil');
 Route::get('/deconnexion', 'CompteController@deconnexion');

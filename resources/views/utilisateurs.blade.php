@@ -1,11 +1,13 @@
 @extends('layout')
 
 @section('contenu')
-    <h1>Les Utilisateurs</h1>
+    <h1 class="title is-l">Les Utilisateurs</h1>
 
     <ul>
         @foreach ($utilisateurs as $utilisateur)
-            <li>{{ $utilisateur->email }}</li>
+            <li>
+                <a href="/{{ $utilisateur->email }}">{{ $utilisateur->email }}</a>
+            </li>
         @endforeach
     </ul>
 @endsection
