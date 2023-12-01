@@ -19,10 +19,15 @@ Route::post('/connexion', 'ConnexionController@traitement');
 
 Route::get('/', 'UtilisateursController@liste');
 
-Route::get('/mon-compte', 'CompteController@accueil');
-Route::get('/deconnexion', 'CompteController@deconnexion');
-Route::post('/modification-mot-de-passe', 'CompteController@modificationMotDePasse');
+Route::group([
+    'middleware' => 'App\Http\Middleware\Auth',
+], function() {
+    Route::get('/mon-compte', 'CompteController@accueil');
+    Route::get('/deconnexion', 'CompteController@deconnexion');
+    
+    Route::post('/modification-mot-de-passe', 'CompteController@modificationMotDePasse');
+    Route::post('/messages', 'MessagesController@nouveau');
+});
 
-Route::post('/messages', 'MessagesController@nouveau');
 
 Route::get('/{email}', 'UtilisateursController@voir');
