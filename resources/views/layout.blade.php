@@ -14,6 +14,22 @@
 
     </head>
     <body>
+        <nav class="navbar is-light">
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a href="/" class="navbar-item {{ request()->is('/') ? 'is-active' : ''}}">Accueil</a>
+                </div>
+                <div class="navbar-end">
+                    @if(auth()->check())
+                        <a href="/mon-compte" class="navbar-item {{ request()->is('mon-compte') ? 'is-active' : ''}}">Mon compte</a>
+                        <a href="/deconnexion" class="navbar-item">Déconnexion</a>
+                    @else 
+                        <a href="/connexion" class="navbar-item {{ request()->is('connexion') ? 'is-active' : ''}}">Connexion</a>
+                        <a href="/inscription" class="navbar-item {{ request()->is('inscription') ? 'is-active' : ''}}">Inscription</a>
+                    @endif
+                </div>
+            </div>
+        </nav>
         <div class="container">
             @include('flash::message')
             
