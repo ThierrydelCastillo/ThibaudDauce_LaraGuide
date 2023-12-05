@@ -8,7 +8,7 @@
                     {{ $utilisateur->email }}
                 </div>
                 @auth
-                    <form class="level-item" method="post" action="/{{ $utilisateur->email }}/suivi">
+                    <form class="level-item" method="post" action="/{{ $utilisateur->email }}/suivis">
                         {{ csrf_field() }}
                         <button type="submit" class="button">Suivre</button>
                     </form>
