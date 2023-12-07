@@ -2,7 +2,7 @@
 
 @section('contenu')
     <form action="/connexion" method="post" class="section">
-        {{ csrf_field() }}
+        @csrf
 
         <div class="field">
             <label class="label">Adresse email</label>

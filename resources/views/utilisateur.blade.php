@@ -9,9 +9,9 @@
                 </div>
                 @auth
                     <form class="level-item" method="post" action="/{{ $utilisateur->email }}/suivis">
-                        {{ csrf_field() }}
+                        @csrf
                         @if(auth()->user()->suit($utilisateur))
-                            {{ method_field('delete') }}
+                            @method('delete')
                         @endif
 
                         @if(auth()->user()->suit($utilisateur))
@@ -28,7 +28,7 @@
 
     @if (auth()->check() AND auth()->user()->id === $utilisateur->id)
         <form action="/messages" method="post">
-            {{ csrf_field() }}
+            @csrf
 
             <div class="field">
                 <label class="label">Message</label>
