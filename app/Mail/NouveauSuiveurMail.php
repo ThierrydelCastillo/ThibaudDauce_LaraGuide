@@ -31,6 +31,8 @@ class NouveauSuiveurMail extends Mailable
     public function build()
     {
         return $this->subject('Vous avez un nouveau suiveur !')
-            ->view('mails.nouveau_suiveur');
+            // ->view('mails.nouveau_suiveur')
+            // ->text('mails.nouveau_suiveur');
+            ->markdown('mails.nouveau_suiveur');
     }
 }

@@ -1,3 +1,7 @@
-Hey!
+@component('mail::message')
 
-Vous avez un nouveau suiveur {{ $suiveur->email }}.
+# Hey!
+
+Vous avez un nouveau suiveur *{{ $suiveur->email }}*.
+
+@endcomponent
