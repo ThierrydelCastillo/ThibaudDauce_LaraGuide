@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NouveauSuiveurMail;
 use App\Utilisateur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SuivisController extends Controller
 {
@@ -11,7 +13,10 @@ class SuivisController extends Controller
     {
         $utilisateurQuiVaSuivre = auth()->user();
         $utilisateurQuiVaEtreSuivi = Utilisateur::where('email', request('email'))->firstOrFail();
+
         $utilisateurQuiVaSuivre->suivis()->attach($utilisateurQuiVaEtreSuivi);
+
+        Mail::to($utilisateurQuiVaEtreSuivi)->send(new NouveauSuiveurMail);
 
         flash("Vous suivez maintenant {$utilisateurQuiVaEtreSuivi->email}")->success();
         return back();
